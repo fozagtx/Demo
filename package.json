@@ -1,0 +1,1 @@
+{"name":"okupy-launch","private":true,"type":"module","scripts":{"build":"tsc --noEmit","render":"bash scripts/render.sh","review":"node review/server.mjs"},"devDependencies":{}}

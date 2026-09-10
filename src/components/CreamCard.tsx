@@ -1,0 +1,1 @@
+import React from 'react'; import {colors,radii,shadow} from '../design/tokens'; export const CreamCard=({children}:{children:React.ReactNode})=><section style={{background:colors.cream,borderRadius:radii.hero,boxShadow:shadow.card,padding:80}}>{children}</section>;

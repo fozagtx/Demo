@@ -1,0 +1,6 @@
+# Generated render artifacts are intentionally not committed because the review
+# system rejects binary files. Run `npm run render` to recreate them locally.
+output/frames/
+output/*.mp4
+qa/*.jpg
+scripts/render-frame

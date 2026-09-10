@@ -1,0 +1,1 @@
+import React from 'react'; export const OkupyBackground=({children}:{children?:React.ReactNode})=><div style={{width:'100%',height:'100%',background:'linear-gradient(110deg,#FF7600 0%,#FF7D0A 27%,#FF9550 58%,#F7B58B 82%,#F8CBB0 100%)',overflow:'hidden',position:'relative'}}>{children}</div>;

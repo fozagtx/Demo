@@ -1,0 +1,1 @@
+import React from 'react'; import {colors} from '../design/tokens'; export const MessageBubble=({children,user=false}:{children:React.ReactNode,user?:boolean})=><div style={{background:user?colors.messageBlue:'#e9e9ee',color:user?'white':colors.charcoal,borderRadius:28,padding:'18px 26px'}}>{children}</div>;

@@ -1,0 +1,1 @@
+import React from 'react'; import {OkupyBackground} from '../components/OkupyBackground'; import {CreamCard} from '../components/CreamCard'; export const OkupyLaunch=()=> <OkupyBackground><CreamCard>Okupy</CreamCard></OkupyBackground>; export const VIDEO={width:1920,height:1080,fps:30,durationInFrames:5400};
