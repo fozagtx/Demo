@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  /* SWEETIE-16 dark 8-bit palette */
+  --surface: #1a1c2c;
+  --panel: #2a2d44;
+  --panel-2: #333c57;
+  --ink: #f4f4f4;
+  --muted: #9ba0b0;
+  --faint: #6b7089;
+  --up: #38b764;
+  --down: #b13e53;
+  --warn: #efc53f;
+  --accent: #41a6f6;
+  --shadow: #10121c;
+  --line: #4a4e69;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --color-warn: var(--warn);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --font-pixel: var(--font-press-start), monospace;
+  --font-crt: var(--font-vt323), monospace;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-vt323), monospace;
+  font-size: 18px;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--panel-2) transparent;
+  border-radius: 0 !important;
+}
+
+/* --- CRT scanlines over the whole screen --- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.13) 0px,
+    rgba(0, 0, 0, 0.13) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* --- pixel boxes: square borders + hard offset shadow --- */
+.pxl {
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 0 var(--shadow);
+}
+
+.pxl-thin {
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+}
+
+/* --- pixel buttons: press-down interaction, stepped easing --- */
+.pxl-btn {
+  transition:
+    transform 70ms steps(2, end),
+    box-shadow 70ms steps(2, end),
+    background-color 70ms steps(2, end);
+}
+
+.pxl-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 0 var(--shadow);
+}
+
+.pxl-btn-thin:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--shadow);
+}
+
+/* --- marquee ticker --- */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}

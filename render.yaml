@@ -1,0 +1,24 @@
+# Render Blueprint for Screenpad (DreamDEX Action Explorer)
+# Deploy: Render Dashboard → New → Blueprint → pick this repo.
+# DATABASE_URL is prompted at deploy time — paste your Neon pooled connection string.
+
+services:
+  - type: web
+    name: screenpad
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_VERSION
+        value: 22.11.0
+      - key: SOMNIA_INDEXER_URL
+        value: https://dev.smk.somnia.host/v1/graphql
+      - key: SOMNIA_WS_RPC_URL
+        value: wss://api.infra.testnet.somnia.network/ws
