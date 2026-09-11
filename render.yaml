@@ -9,7 +9,9 @@ services:
     plan: free
     region: oregon
     branch: main
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm build
+    # Bundled corepack in Node 22.11.0 predates npm's registry key rotation and fails
+    # with "Cannot find matching keyid" — upgrade corepack itself before enabling it.
+    buildCommand: npm install -g corepack@latest && corepack enable && corepack prepare pnpm@10.32.1 --activate && pnpm install --frozen-lockfile && pnpm build
     startCommand: pnpm start
     healthCheckPath: /
     autoDeploy: true

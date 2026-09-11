@@ -64,7 +64,7 @@ Non-secret defaults (indexer URL, chain id, attention thresholds, list depths) l
 
 ## Deploy
 
-A **Render Blueprint** is included (`render.yaml`): Render → New → Blueprint → this repo, paste `DATABASE_URL` (Neon pooled string) when prompted. Build runs `pnpm install --frozen-lockfile && pnpm build`, start runs `pnpm start`.
+A **Render Blueprint** is included (`render.yaml`): Render → New → Blueprint → this repo, paste `DATABASE_URL` (Neon pooled string) when prompted. Build runs `npm install -g corepack@latest && corepack enable && pnpm install --frozen-lockfile && pnpm build` (upgrading corepack first avoids the "Cannot find matching keyid" signature failure with bundled Node corepack), start runs `pnpm start`.
 
 ## Verification
 
@@ -73,6 +73,3 @@ npx tsc --noEmit
 pnpm lint
 pnpm build
 ```
-
-🤖 Generated with Codebuff
-Co-Authored-By: Codebuff <noreply@codebuff.com>
